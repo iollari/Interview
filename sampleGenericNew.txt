@@ -1,0 +1,74 @@
+//We have an IMessage interface with one implementation listed below:
+
+public interface IMessage
+{
+	int MessageId { get; set; }
+
+	string MessageContent { get; set; }
+}
+
+public class AccountMessage : IMessage
+{
+	public int MessageId { get; set; }
+
+	public string MessageContent { get; set; }
+
+	public AccountMessage(int id, string content)
+	{
+		MessageId = id;
+		MessageContent = content;
+	}	
+}
+
+// We have an AccountDataManipulator class that is responsible to do database operations according to the incoming AccountMessages
+
+public class AccountDataManipulator
+{
+	public void ManipulateData(AccountMessage message)
+	{
+		// data manipulation of Accounts
+	}		
+}
+
+// We have a MessageProcessor class that processes the messages by calling the ProcessMessage method
+// It calls the data manipulator and then does some other logic also
+
+public class MessageProcessor
+{
+	public void ProcessMessage(AccountMessage message)
+	{
+		var dataManipulator = new AccountDataManipulator();
+		dataManipulator.ManipulateData(message);
+		
+		// other message processing logic
+	}
+}
+
+// Let's say we're going to have 10 more IMessage implementations to deal with (PartnerMessage, LocationMessage ...etc.)
+// and we want to have different datamanipulation logic for each message type
+
+// How would you refactor the MessageProcessor class to be easier to maintain and test?
+// Feel free to come up with any ideas
+
+// hints:
+// you don't need to implement any data manipulation logic
+// you can introduce any kind of dependencies to MessageProcessor 
+
+(My expectations:
+- candidate should mention the use of IMessage instead of concrete implementation
+- should mention to pass the data manipulator as a dependency - either constructor, or method parameter - instead of instantiating in the ProcessMessage method
+- should mention to create an interface for data manipulation and change the AccountDataManipulator so that it implements this interface)
+
+(After 5 minutes, if we are stucked)
+
+// let me introduce a new interface called IDataManipulator. How would you use it to do the refactor?
+
+public interface IDataManipulator<T> where T : IMessage
+{
+	void ManipulateData(T message);
+}
+
+(My expectations:
+- candidate should change AccountDataManipulator so that it implements IDataManipulator<AccountMessage> interface
+- should mention to pass the data manipulator as a dependency - either constructor, or method parameter - instead of instantiating in the ProcessMessage method)
+
