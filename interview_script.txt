@@ -1,0 +1,21 @@
+- DumpAllFiles
+- what is a HashSet? When it is best to use it?
+- HashSet vs Dictionary?
+
+- MessageProcessor
+- What is SOLID? Explain the Open/Closed principle
+- What are design patterns? What pattern have you recently used? Explain
+
+- nullable
+- what do you know about nullable? (is it value or reference)
+
+- SQL task
+- indexes (clustered, non-clustered)
+- can you have a primary key on a non-clustered index?
+- do clustered indexes have to be uniqe?
+- How would you start resolving an issue with a query being too slow? ExecutionPlan?
+
+- what levels of testing do you know of?
+- which levels are mostly done by developers?
+- which level has to have the biggest number of tests? (why?)
+
