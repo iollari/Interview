@@ -1,0 +1,24 @@
+//If I have a code like
+
+string someString = null;
+string someNewString = null;
+
+var equals = someString.Equals(someNewString);
+
+Console.WriteLine(equals);
+
+//What will happen?
+
+//how to avoid NRE?
+
+//var equals = string.Equals(someString, someNewString);
+
+
+long? someNumber = null;
+long? someNewNumber = null;
+
+var equals = someNumber.Equals(someNewNumber);
+
+Console.WriteLine(equals);
+
+//What will happen?
